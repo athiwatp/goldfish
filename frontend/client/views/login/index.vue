@@ -23,10 +23,13 @@
                   <i class="fa fa-lock"></i>
                 </span>
               </p>
+
               <p class="control">
+              <tooltip label="Use 'goldfish' as vault token to login" placement="bottom-right" type="info" size="large" rounded="true" :always="true">
                 <button type="submit" value="Login" class="button is-success">
                   Login
                 </button>
+              </tooltip>
               </p>
 
             </form>
@@ -69,6 +72,7 @@
 <script>
   import Vue from 'vue'
   import Notification from 'vue-bulma-notification'
+  import Tooltip from 'vue-bulma-tooltip'
 
   const NotificationComponent = Vue.extend(Notification)
 
@@ -105,6 +109,10 @@
   }
 
   export default {
+    components: {
+      Tooltip
+    },
+
     data () {
       return {
         csrf: '',
