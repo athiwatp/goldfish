@@ -216,8 +216,6 @@
     })
   }
 
-  const querystring = require('querystring')
-
   function handleError (error) {
     if (error.response.data.error) {
       openNotification({
@@ -431,24 +429,12 @@
       },
 
       saveEdit: function () {
-        var body = JSON.stringify(this.constructedPayload)
-        this.$http
-          .post('/api/secrets?path=' + this.currentPath, querystring.stringify({
-            body: body
-          }), {
-            headers: {'X-CSRF-Token': this.csrf}
-          })
-          .then((response) => {
-            openNotification({
-              title: 'Success!',
-              message: '',
-              type: 'success'
-            })
-            this.editMode = false
-          })
-          .catch((error) => {
-            handleError(error)
-          })
+        openNotification({
+          title: 'Demo Mode',
+          message: 'Results are not saved to vault',
+          type: 'warning'
+        })
+        this.editMode = false
       },
 
       cancelEdit: function () {
@@ -462,14 +448,11 @@
         if (this.newKey === '') {
           openNotification({
             title: 'Invalid',
-            message: 'key and value must be non-empty',
+            message: 'secret name must be non-empty',
             type: 'warning'
           })
           return
         }
-
-        // Backup in case edit is cancelled
-        this.currentPathCopy = this.currentPath
 
         // Display the to-be path of the new secret
         this.currentPath += this.newKey
