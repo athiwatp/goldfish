@@ -197,7 +197,6 @@
 
 <script>
 import VbSwitch from 'vue-bulma-switch'
-const querystring = require('querystring')
 
 export default {
   components: {
@@ -396,7 +395,7 @@ export default {
       if (!(this.newKey === '' || this.newValue === '') && !this.newKeyExists) {
         this.addKeyValue()
       }
-      openNotification({
+      this.$notify({
         title: 'Demo Mode',
         message: 'Results are not saved to vault',
         type: 'warning'
