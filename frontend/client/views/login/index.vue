@@ -45,7 +45,7 @@
                 </p>
 
                 <p v-if="type === 'Token'" class="control">
-                <tooltip label="use 'goldfish' as vault token to login" placement="bottom-right" type="info" size="large" rounded="true" :always="true">
+                <tooltip label="Use 'goldfish' as vault token to login" placement="bottom-right" type="info" size="large" rounded="true" :always="true">
                   <button type="submit" value="Login" class="button is-primary">
                     Login
                   </button>
@@ -53,7 +53,7 @@
                 </p>
 
                 <p v-if="type === 'Userpass'" class="control">
-                <tooltip label="use username:'goldfish' and password:'goldfish' to login" placement="bottom-right" type="info" size="large" rounded="true" :always="true">
+                <tooltip label="Use username:'goldfish', password:'goldfish'" placement="bottom-right" type="info" size="large" rounded="true" :always="true">
                   <button type="submit" value="Login" class="button is-primary">
                     Login
                   </button>
@@ -154,7 +154,13 @@
 </template>
 
 <script>
+import Tooltip from 'vue-bulma-tooltip'
+
 export default {
+  components: {
+    Tooltip
+  },
+
   data () {
     return {
       csrf: '',
